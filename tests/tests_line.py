@@ -24,3 +24,9 @@ class TestLine(TestCase):
                     'Madrid"}.\n\r',
         )
         self.assertTrue(line.has_ending_point)
+
+    def test_has_curly_bracket_at_start(self):
+        line = Line(
+            content='{"player": {"first_name": "Kylian", "last_name": "Mbappé", "Age": 22}, "team": "PSG"}',
+        )
+        self.assertTrue(line.has_curly_bracket_at_start)

@@ -21,3 +21,7 @@ class Line:
         """Check if line content ends with a period."""
         return self.content.rstrip("\r\n").endswith(".")
 
+    @property
+    def has_curly_bracket_at_start(self) -> bool:
+        """Check if line content starts with a curly bracket."""
+        return self.content.startswith("{")
