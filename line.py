@@ -15,3 +15,9 @@ class Line:
     def has_dollar_sign(self) -> bool:
         """Check if line content contains dollar sign."""
         return "$" in self.content
+
+    @property
+    def has_ending_point(self) -> bool:
+        """Check if line content ends with a period."""
+        return self.content.rstrip("\r\n").endswith(".")
+
