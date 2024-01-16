@@ -66,3 +66,8 @@ class TestLine(TestCase):
             position=2
         )
         self.assertEqual(expected_data, line.process_line())
+
+    def test_process_line_without_condition(self):
+        expected_data = "Rien à afficher"
+        line = Line(content="Match 444 has fin#shed", position=3)
+        self.assertEqual(expected_data, line.process_line())

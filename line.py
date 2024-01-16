@@ -39,3 +39,5 @@ class Line:
             deserialized_content = json.loads(self.content)
             deserialized_content["pair"] = self.position % 2 == 0
             return json.dumps(deserialized_content, ensure_ascii=False)
+        return "Rien à afficher"
+
