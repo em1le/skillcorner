@@ -31,7 +31,12 @@ class TestLine(TestCase):
         )
         self.assertTrue(line.has_curly_bracket_at_start)
 
-    def test_process_line(self) -> None:
+    def test_process_line_with_multiple_of_5(self) -> None:
         expected_data = "Multiple de 5"
         line = Line(content="")
+        self.assertEqual(expected_data, line.process_line())
+
+    def test_process_line_with_dollar_sign(self) -> None:
+        expected_data = "Match_95687_has_fin$shed"
+        line = Line(content="Match 95687 has fin$shed", position=1)
         self.assertEqual(expected_data, line.process_line())

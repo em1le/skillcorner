@@ -30,4 +30,5 @@ class Line:
         """Process line according to specific condition and return value accordingly."""
         if self.is_multiple_of_5:
             return "Multiple de 5"
-
+        elif self.has_dollar_sign:
+            return self.content.strip().replace(" ", "_")
