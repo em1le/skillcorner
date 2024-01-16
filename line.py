@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 
 
@@ -32,3 +33,9 @@ class Line:
             return "Multiple de 5"
         elif self.has_dollar_sign:
             return self.content.strip().replace(" ", "_")
+        elif self.has_ending_point:
+            return self.content
+        elif self.has_curly_bracket_at_start:
+            deserialized_content = json.loads(self.content)
+            deserialized_content["pair"] = self.position % 2 == 0
+            return json.dumps(deserialized_content, ensure_ascii=False)

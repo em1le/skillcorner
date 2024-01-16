@@ -40,3 +40,29 @@ class TestLine(TestCase):
         expected_data = "Match_95687_has_fin$shed"
         line = Line(content="Match 95687 has fin$shed", position=1)
         self.assertEqual(expected_data, line.process_line())
+
+    def test_process_line_with_ending_point(self) -> None:
+        expected_data = ('{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético '
+                         'Madrid"}.')
+        line = Line(
+            content='{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético Madrid"}.',
+            position=1
+        )
+        self.assertEqual(expected_data, line.process_line())
+
+    def test_process_line_with_curly_bracket(self) -> None:
+        expected_data = ('{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético '
+                         'Madrid", "pair": false}')
+        line = Line(
+            content='{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético Madrid"}',
+            position=1
+        )
+        self.assertEqual(expected_data, line.process_line())
+
+        expected_data = ('{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético '
+                         'Madrid", "pair": true}')
+        line = Line(
+            content='{"player": {"first_name": "Luis", "last_name": "Suárez", "Age": 34}, "team": "Atlético Madrid"}',
+            position=2
+        )
+        self.assertEqual(expected_data, line.process_line())
