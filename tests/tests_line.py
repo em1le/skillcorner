@@ -25,8 +25,13 @@ class TestLine(TestCase):
         )
         self.assertTrue(line.has_ending_point)
 
-    def test_has_curly_bracket_at_start(self):
+    def test_has_curly_bracket_at_start(self) -> None:
         line = Line(
             content='{"player": {"first_name": "Kylian", "last_name": "Mbappé", "Age": 22}, "team": "PSG"}',
         )
         self.assertTrue(line.has_curly_bracket_at_start)
+
+    def test_process_line(self) -> None:
+        expected_data = "Multiple de 5"
+        line = Line(content="")
+        self.assertEqual(expected_data, line.process_line())

@@ -25,3 +25,9 @@ class Line:
     def has_curly_bracket_at_start(self) -> bool:
         """Check if line content starts with a curly bracket."""
         return self.content.startswith("{")
+
+    def process_line(self) -> str:
+        """Process line according to specific condition and return value accordingly."""
+        if self.is_multiple_of_5:
+            return "Multiple de 5"
+
