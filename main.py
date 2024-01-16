@@ -1,16 +1,10 @@
-# This is a sample Python script.
+from log import Log
+from reader import Reader
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    file_path = input("Enter the file path : ")
+    data = Reader.extract_data(file_path)
+    log = Log(data)
+    for line in log.lines:
+        new_data = line.process_line()
+        print(f"{line.position} : {new_data}")
